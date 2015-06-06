@@ -8,6 +8,8 @@ util.inherits(CodeInjection, Transform);
 
 function CodeInjection(injectionId, opt) {
   this._injectionId = injectionId;
+  this._injectContentList = [];
+
   Transform.call(this, opt);
 }
 
@@ -22,7 +24,7 @@ CodeInjection.prototype._transform = function(chunk) {
     // injection comment check
     if(line.indexOf('@injection:' + this._injectionId) > 0) {
       this.push(line + os.EOL);
-      this.push(this._somecontent);
+      this.push(this._injectContentList.join(os.EOL));
     } else {
       this.push(line + os.EOL);
     }
@@ -30,7 +32,9 @@ CodeInjection.prototype._transform = function(chunk) {
 };
 
 CodeInjection.prototype.inject = function(somecontent) {
-  this._somecontent = somecontent;
+  this._injectContentList.push(somecontent);
+
+  return this;
 };
 
 module.exports = CodeInjection;

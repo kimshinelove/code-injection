@@ -11,7 +11,9 @@ describe('code-injection node module', function () {
 
 		var injection = new codeInjection('id1');
 
-		injection.inject('somecontent22222');
+		injection
+			.inject('line1')
+			.inject('line2');
 
 		readStream.pipe(injection).pipe(process.stdout);
 
