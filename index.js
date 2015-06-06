@@ -13,7 +13,7 @@ function CodeInjection(injectionId, opt) {
   Transform.call(this, opt);
 }
 
-CodeInjection.prototype._transform = function(chunk) {
+CodeInjection.prototype._transform = function(chunk, _, next) {
   var chunkString = chunk.toString();
   var lineSplit = chunkString.split(os.EOL);
   var lineCount = lineSplit.length;
@@ -29,6 +29,8 @@ CodeInjection.prototype._transform = function(chunk) {
       this.push(line + os.EOL);
     }
   }
+
+  next();
 };
 
 CodeInjection.prototype.inject = function(somecontent) {

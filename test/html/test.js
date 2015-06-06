@@ -9,13 +9,13 @@ describe('code-injection node module', function () {
 			bufferSize: 4
 		});
 
-		var injection = new codeInjection('id1');
+		var id1 = new codeInjection('id1');
+		var id2 = new codeInjection('id2');
 
-		injection
-			.inject('line1')
-			.inject('line2');
+		id1.inject('line1').inject('line2');
+		id2.inject('content1').inject('content2');
 
-		readStream.pipe(injection).pipe(process.stdout);
+		readStream.pipe(id1).pipe(id2).pipe(process.stdout);
 
 		assert(true, 'I was too lazy to write any tests. Shame on me.');
 	});
