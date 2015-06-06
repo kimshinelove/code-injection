@@ -1,0 +1,38 @@
+{
+  "name": "code-injection",
+  "version": "0.0.0",
+  "description": "code injection module",
+  "author": {
+    "name": "JiTae, Kim",
+    "email": "kimshinelove@gmail.com"
+  },
+  "repository": "kimshinelove/code-injection",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "code-injection",
+    "node",
+    "code",
+    "injection"
+  ],
+  "dependencies": {
+    "byline": "^4.2.1",
+    "through": "^2.3.7",
+    "trumpet": "^1.7.1"
+  },
+  "devDependencies": {
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-cli": "^1.12.0",
+    "jshint-stylish": "^1.0.1",
+    "load-grunt-tasks": "^3.1.0",
+    "time-grunt": "^1.1.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}
