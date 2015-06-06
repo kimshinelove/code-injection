@@ -17,18 +17,21 @@ CodeInjection.prototype._transform = function(chunk, _, next) {
   var chunkString = chunk.toString();
   var lineSplit = chunkString.split(os.EOL);
   var lineCount = lineSplit.length;
+  var ouput = [];
 
   for(var i = 0; i < lineCount; i++) {
     var line = lineSplit[i];
 
     // injection comment check
     if(line.indexOf('@injection:' + this._injectionId) > 0) {
-      this.push(line + os.EOL);
-      this.push(this._injectContentList.join(os.EOL));
+      ouput.push(line);
+      ouput.push(this._injectContentList.join(os.EOL));
     } else {
-      this.push(line + os.EOL);
+      ouput.push(line);
     }
   }
+
+  this.push(ouput.join(os.EOL));
 
   next();
 };
