@@ -8,7 +8,10 @@ describe('code-injection node module', function () {
 		var readStream = fs.createReadStream('test/html/test.html', {
 			bufferSize: 4
 		});
+
 		var injection = new codeInjection('id1');
+
+		injection.inject('somecontent22222');
 
 		readStream.pipe(injection).pipe(process.stdout);
 
