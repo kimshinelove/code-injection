@@ -5,9 +5,7 @@ var fs = require('fs');
 
 describe('code-injection node module', function () {
 	it('must have at least one test', function () {
-		var readStream = fs.createReadStream('test/html/test.html', {
-			bufferSize: 4
-		});
+		var readStream = fs.createReadStream('test/html/test.html');
 
 		var id1 = new codeInjection('id1');
 		var id2 = new codeInjection('id2');
