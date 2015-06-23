@@ -16,7 +16,7 @@ function CodeInjection(injectionId, opt) {
 
 CodeInjection.prototype._transform = function(chunk, _, next) {
   var chunkString = chunk.toString();
-  var lineSplit = chunkString.split(os.EOL);
+  var lineSplit = chunkString.split(/\r\n|\n/);
   var lineCount = lineSplit.length;
   var ouput = [];
 
@@ -26,7 +26,7 @@ CodeInjection.prototype._transform = function(chunk, _, next) {
     // injection comment check
     if(line.indexOf('@injection:' + this._injectionId) > 0) {
       ouput.push(line);
-      ouput.push(this._injectContentList.join(os.EOL));
+      ouput.push(this._injectContentList.join(/\r\n|\n/));
 
       this._bIsInjectionOpen = true;
     } else if(line.indexOf('injection@') > 0) {
